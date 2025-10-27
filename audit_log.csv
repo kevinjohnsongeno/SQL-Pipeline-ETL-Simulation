@@ -1,0 +1,2 @@
+audit_id,source_table,destination_table,start_row,end_row,rows_inserted,timestamp
+1,staging_sales,production_sales,1,99457,99457,2025-10-27 13:44:28
