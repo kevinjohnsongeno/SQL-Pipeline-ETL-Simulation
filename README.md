@@ -31,7 +31,7 @@ The pipeline replicates real-world ETL workflows without relying on external ETL
 | **Interface** | DB Browser for SQLite |
 | **Source Data** | Retail sales transactions (CSV file) |
 | **Language** | SQL (SQLite dialect) |
-| **Output Format** | CSV and SQLite database tables |
+| **Output Format** | SQLite database tables |
 
 ---
 
@@ -63,9 +63,8 @@ The project is divided into five key phases that simulate a real ETL process:
 - Automated **SQL triggers** are used to insert audit entries automatically whenever new records are added to production tables.
 
 ### 5️⃣ Export and Verification
-- Final **production tables** and **audit logs** are exported as CSV files.  
-- These can be used for analytics dashboards, reports, or further data modeling.  
-- The system ensures **data consistency**, **traceability**, and **process automation**.
+- Final **production tables** can be used for analytics dashboards, reports, or further data modeling.  
+- This ensures **data consistency**, **traceability**, and **process automation**.
 
 ---
 
@@ -101,7 +100,6 @@ The project is divided into five key phases that simulate a real ETL process:
 | **README.md** | Complete project documentation including objectives, tools, ETL workflow, and results. |
 | **SQL ETL Simulation** | Main SQL script implementing the ETL process (Extract, Transform, Load, and Audit). |
 | **customer_shopping_data.csv** | Raw retail sales dataset used as the input source for the ETL pipeline. |
-| **salesdata.db** | SQLite database file containing all project tables — staging, cleaned, production, and audit. |
 | **SQL_ETL_Project_Report.pdf**  | Concise 1–2 page project summary. |
 
 ---
@@ -117,7 +115,7 @@ The project is divided into five key phases that simulate a real ETL process:
 
 ## 🔍 Learning Outcomes
 
-Through this project, you’ll learn to:
+Through this project,I've learned to:
 - Design and execute SQL-based ETL pipelines.  
 - Manage data quality directly in SQL.  
 - Build audit mechanisms for data traceability.  
