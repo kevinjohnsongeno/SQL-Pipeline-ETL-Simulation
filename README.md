@@ -1,6 +1,6 @@
 # 🧩 SQL ETL Pipeline Simulation
 
-> **Objective:** Simulate an **ETL (Extract, Transform, Load)** process entirely using SQL and SQLite to demonstrate data engineering fundamentals.
+> **Objective:** Simulate an **ETL (Extract, Transform, Load)** process entirely using SQLite to demonstrate data engineering fundamentals.
 
 ---
 
@@ -98,8 +98,7 @@ The project is divided into five key phases that simulate a real ETL process:
 | File | Description |
 |------|-------------|
 | **README.md** | Complete project documentation including objectives, workflow, and results. |
-| **ETL Simulation on salesdata.sql** | Main SQL script implementing the full ETL pipeline (Extract → Transform → Load → Audit). |
-| **SQL ETL Simulation** | Supporting SQL script for testing and data validation. |
+| **SQL ETL Simulation** |  Main SQL script implementing the full ETL pipeline (Extract → Transform → Load → Audit). |
 | **customer_shopping_data.csv** | Raw retail sales dataset used as the ETL input source. |
 | **cleaned_sales.csv** | Cleaned version of the dataset generated after transformation. |
 | **production_sales.csv** | Final analytics-ready dataset with computed totals. |
