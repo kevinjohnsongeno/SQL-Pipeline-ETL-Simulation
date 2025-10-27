@@ -31,7 +31,7 @@ The pipeline replicates real-world ETL workflows without relying on external ETL
 | **Interface** | DB Browser for SQLite |
 | **Source Data** | Retail sales transactions (CSV file) |
 | **Language** | SQL (SQLite dialect) |
-| **Output Format** | SQLite database tables |
+| **Output Format** | SQLite database tables and CSV exports |
 
 ---
 
@@ -42,29 +42,29 @@ The project is divided into five key phases that simulate a real ETL process:
 ### 1️⃣ Extract
 - Raw sales data from a CSV file is imported into a **staging table**.  
 - This table acts as a temporary workspace for initial data inspection and validation.  
-- Original data remains intact for traceability and reproducibility.
+- The original data remains intact for traceability and reproducibility.
 
 ### 2️⃣ Transform
 - Data cleaning and transformation are performed on the staging table.  
 - Duplicates, null values, and invalid records are removed.  
-- Text fields are standardized, numeric fields are validated, and date formats are normalized.  
-- Cleaned data is stored in a **cleaned table** ready for production loading.
+- Text fields are standardized, numeric fields validated, and date formats normalized.  
+- The cleaned data is stored in a **cleaned table** ready for production loading.
 
 ### 3️⃣ Load
-- Clean, validated data is moved to **production tables** structured for analytics.  
-- Additional computed metrics such as **Total Amount (Quantity × Price)** are included.  
-- Data is timestamped during the load process for tracking and historical reference.
+- Clean, validated data is moved into a **production table** designed for analytics.  
+- Computed metrics such as **Total Amount (Quantity × Price)** are included.  
+- Each record is timestamped during the load process for tracking.
 
 ### 4️⃣ Audit and Automation
-- An **audit log** records every ETL operation, storing:
-  - Source and destination table names  
-  - Number of records processed  
-  - Row ranges and timestamps  
-- Automated **SQL triggers** are used to insert audit entries automatically whenever new records are added to production tables.
+- An **audit log** records every ETL operation, capturing:  
+  - Source and destination tables  
+  - Row ranges, record counts, and timestamps  
+- Automated **SQL triggers** ensure audit entries are logged automatically when data is inserted into production tables.
 
 ### 5️⃣ Export and Verification
-- Final **production tables** can be used for analytics dashboards, reports, or further data modeling.  
-- This ensures **data consistency**, **traceability**, and **process automation**.
+- Final **production tables** are verified for completeness and accuracy.  
+- Outputs can be exported as CSV files for reporting or business analysis.  
+- This ensures **data consistency**, **traceability**, and **repeatability**.
 
 ---
 
@@ -72,21 +72,21 @@ The project is divided into five key phases that simulate a real ETL process:
 
 | Output Table | Description |
 |---------------|-------------|
-| **staging_sales** | Contains raw, unprocessed sales data imported from CSV. |
-| **cleaned_sales** | Intermediate dataset after applying all cleaning and transformation logic. |
-| **production_sales** | Final dataset for business reporting, includes computed totals and timestamps. |
-| **audit_log** | Records all ETL operations, including source, destination, and data volume. |
+| **staging_sales** | Contains raw, unprocessed data imported from the CSV file. |
+| **cleaned_sales** | Intermediate dataset after cleaning and transformation. |
+| **production_sales** | Final analytics-ready dataset with computed totals and timestamps. |
+| **audit_log** | Tracks all ETL operations including record counts and load timestamps. |
 
 ---
 
 ## 🧾 Example Results
 
-### Sample Cleaned Record
+### ✅ Sample Cleaned Record
 | Invoice No | Customer ID | Gender | Age | Category | Quantity | Price | Payment Method | Invoice Date | Shopping Mall |
 |-------------|--------------|--------|-----|-----------|-----------|--------|----------------|---------------|----------------|
 | I138884 | C241288 | FEMALE | 28 | Clothing | 5 | 1500.40 | CREDIT CARD | 2022-08-05 | Kanyon |
 
-### Example Audit Log Entry
+### ✅ Example Audit Log Entry
 | Audit ID | Source Table | Destination Table | Rows Inserted | Timestamp |
 |-----------|---------------|------------------|----------------|------------|
 | 1 | staging_sales | production_sales | 5000 | 2025-10-27 15:45:00 |
@@ -97,50 +97,57 @@ The project is divided into five key phases that simulate a real ETL process:
 
 | File | Description |
 |------|-------------|
-| **README.md** | Complete project documentation including objectives, tools, ETL workflow, and results. |
-| **SQL ETL Simulation** | Main SQL script implementing the ETL process (Extract, Transform, Load, and Audit). |
-| **customer_shopping_data.csv** | Raw retail sales dataset used as the input source for the ETL pipeline. |
-| **SQL_ETL_Project_Report.pdf**  | Concise 1–2 page project summary. |
+| **README.md** | Complete project documentation including objectives, workflow, and results. |
+| **ETL Simulation on salesdata.sql** | Main SQL script implementing the full ETL pipeline (Extract → Transform → Load → Audit). |
+| **SQL ETL Simulation** | Supporting SQL script for testing and data validation. |
+| **customer_shopping_data.csv** | Raw retail sales dataset used as the ETL input source. |
+| **cleaned_sales.csv** | Cleaned version of the dataset generated after transformation. |
+| **production_sales.csv** | Final analytics-ready dataset with computed totals. |
+| **audit_log.csv** | Audit trail capturing ETL process metadata. |
+| **SQL_ETL_PIPELINE_REPORT.pdf** | Concise 1–2 page project report summarizing methods and findings. |
 
 ---
 
 ## 🧩 Key Features
 
-- 💾 Fully SQL-based ETL implementation  
-- 🔁 Automated auditing through triggers  
-- ⏱ Timestamp tracking for every ETL load    
-- ⚙️ Re-runnable and modular design  
+- 💾 End-to-end **SQL-based ETL** implementation  
+- 🔁 **Automated auditing** via database triggers  
+- ⏱ Built-in **timestamp tracking** for all ETL runs  
+- 🧹 **Data cleaning** and standardization in SQL  
+- 📦 **Reproducible and portable** SQLite-based workflow  
 
 ---
 
 ## 🔍 Learning Outcomes
 
-Through this project,I've learned to:
-- Design and execute SQL-based ETL pipelines.  
-- Manage data quality directly in SQL.  
-- Build audit mechanisms for data traceability.  
-- Use SQLite as a lightweight ETL testing environment.  
-- Understand how real-world ETL systems work at a conceptual level.
+Through this project, I learned to:
+- Design, build, and automate SQL-driven ETL workflows.  
+- Manage data quality within relational databases.  
+- Implement audit trails and maintain ETL transparency.  
+- Use SQLite as a lightweight environment for testing and demonstration.  
+- Understand the lifecycle of ETL in data engineering systems.
 
 ---
 
 ## 🧭 How to Use This Project
 
-1. Open **DB Browser for SQLite**.  
-2. Create or open a database file.  
-3. Import the raw data CSV into the **staging_sales** table.  
-4. Run the SQL ETL script step-by-step.  
-5. Check the **production_sales** and **audit_log** tables.  
-6. Export the results as CSV or visualize directly.  
+1. Open **DB Browser for SQLite** (or any SQLite-compatible environment).  
+2. Load the `salesdata.db` database file.  
+3. Import the `customer_shopping_data.csv` file into the `staging_sales` table.  
+4. Execute the SQL script: **ETL Simulation on salesdata.sql**.  
+5. View results in the following tables:
+   - `cleaned_sales`
+   - `production_sales`
+   - `audit_log`
+6. Export the final tables to CSV for reporting or visualization.
 
 ---
 
 ## 🏁 Conclusion
 
 This project successfully simulates an **end-to-end ETL workflow** using only SQL within SQLite.  
-It demonstrates how raw data can be extracted, cleaned, transformed, and loaded into analytics-ready tables while maintaining full process transparency through audit logs and automation triggers.  
-
-The pipeline’s modular structure makes it suitable for **small-scale data warehousing**, **teaching**, and **ETL prototyping** before scaling to enterprise tools.
+It demonstrates how to extract, clean, transform, and load data while maintaining audit transparency through automated triggers.  
+The modular design and detailed audit logging make it ideal for **academic learning**, **data engineering demonstrations**, or **portfolio showcasing**.
 
 ---
 
@@ -150,4 +157,4 @@ The pipeline’s modular structure makes it suitable for **small-scale data ware
 **Email:** *kevinjohnsongeno@gmail.com*  
 **Last Updated:** *October 2025*  
 
-> Run this project in **DB Browser for SQLite** or the SQLite CLI for an instant, visualized ETL experience.
+> 💡 *Tip:* Run this project directly in **DB Browser for SQLite** to visualize the ETL process in action and inspect table relationships instantly.
