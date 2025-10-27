@@ -98,12 +98,11 @@ The project is divided into five key phases that simulate a real ETL process:
 
 | File | Description |
 |------|-------------|
-| **etl_pipeline.sql** | Main SQL script containing the entire ETL workflow. |
-| **raw_sales.csv** | Original dataset imported into the staging table. |
-| **production_sales.csv** | Final cleaned and transformed dataset ready for analytics. |
-| **audit_log.csv** | Log of ETL activities and metadata for process validation. |
-| **SQL_ETL_Project_Report.pdf** | A concise 1–2 page report summarizing project objectives and implementation. |
-| **README.md** | Complete documentation (you’re reading it!). |
+| **README.md** | Complete project documentation including objectives, tools, ETL workflow, and results. |
+| **SQL ETL Simulation** | Main SQL script implementing the ETL process (Extract, Transform, Load, and Audit). |
+| **customer_shopping_data.csv** | Raw retail sales dataset used as the input source for the ETL pipeline. |
+| **salesdata.db** | SQLite database file containing all project tables — staging, cleaned, production, and audit. |
+| **SQL_ETL_Project_Report.pdf**  | Concise 1–2 page project summary. |
 
 ---
 
@@ -153,4 +152,4 @@ The pipeline’s modular structure makes it suitable for **small-scale data ware
 **Email:** *kevinjohnsongeno@gmail.com*  
 **Last Updated:** *October 2025*  
 
-> 💡 *Tip:* Run this project in **DB Browser for SQLite** or the SQLite CLI for an instant, visualized ETL experience.
+> Run this project in **DB Browser for SQLite** or the SQLite CLI for an instant, visualized ETL experience.
